@@ -14,6 +14,7 @@
 		A1000009 /* BridgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008 /* BridgeManager.swift */; };
 		A100000B /* NightscoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000A /* NightscoutManager.swift */; };
 		A100000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100000C /* Assets.xcassets */; };
+		A100000F /* LocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000E /* LocalDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,8 @@
 		A1000008 /* BridgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeManager.swift; sourceTree = "<group>"; };
 		A100000A /* NightscoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightscoutManager.swift; sourceTree = "<group>"; };
 		A100000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A100000E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A100000E /* LocalDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabase.swift; sourceTree = "<group>"; };
+		A1000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +58,9 @@
 				A1000006 /* MonitorView.swift */,
 				A1000008 /* BridgeManager.swift */,
 				A100000A /* NightscoutManager.swift */,
+				A100000E /* LocalDatabase.swift */,
 				A100000C /* Assets.xcassets */,
-				A100000E /* Info.plist */,
+				A1000010 /* Info.plist */,
 			);
 			path = CGMMonitor;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				A1000007 /* MonitorView.swift in Sources */,
 				A1000009 /* BridgeManager.swift in Sources */,
 				A100000B /* NightscoutManager.swift in Sources */,
+				A100000F /* LocalDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,13 @@
 # CGM Monitor iOS App
 
-Native iOS app that runs Nightscout and Carelink-bridge automatically.
+Native iOS app that fetches CareLink data and stores locally.
 
 ## Features
 
-- **First Launch Setup**: Prompts for CareLink credentials and Nightscout configuration
-- **Automatic Data Sync**: Fetches data from CareLink every 5 minutes and uploads to Nightscout
+- **First Launch Setup**: Prompts for CareLink credentials only
+- **Local Storage**: All data stored in SQLite on device
+- **Auto-Wipe**: Data older than 24 hours automatically deleted
+- **Automatic Data Sync**: Fetches data from CareLink every 5 minutes
 - **Minimal UI**: Clean interface showing:
   - Current glucose value with color coding (red < 70, green 70-180, yellow > 180)
   - Trend arrow
@@ -17,7 +19,6 @@ Native iOS app that runs Nightscout and Carelink-bridge automatically.
 - iOS 15.0 or later
 - Xcode 15.0 or later
 - Active CareLink account with connected pump
-- Nightscout site URL and API secret
 
 ## Setup
 
@@ -34,24 +35,23 @@ On first launch, you'll be prompted to enter:
    - Password
    - Server region (US or EU)
 
-2. **Nightscout Configuration**
-   - Nightscout URL (e.g., https://yoursite.herokuapp.com)
-   - API Secret
-
 After setup, the app will:
 - Authenticate with CareLink
-- Start syncing data every 5 minutes
+- Start syncing data every 5 minutes to local SQLite database
 - Display real-time glucose readings
+- Auto-delete data older than 24 hours
 
 ## Architecture
 
+- **LocalDatabase**: SQLite storage with auto-cleanup
 - **BridgeManager**: Handles CareLink authentication and data fetching
-- **NightscoutManager**: Manages Nightscout API communication and data display
+- **NightscoutManager**: Reads from local database and updates UI
 - **SetupView**: First-run configuration screen
 - **MonitorView**: Main glucose monitoring interface with chart
 
-## Notes
+## Privacy
 
-- App uses background fetch to keep data updated
-- Settings can be reset via gear icon in top-right
-- Chart shows last 3 hours of data with 180 mg/dL high and 70 mg/dL low reference lines
+- All data stored locally on device
+- No cloud sync or external uploads
+- Data automatically wiped after 24 hours
+- Each user has isolated data storage

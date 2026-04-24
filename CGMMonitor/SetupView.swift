@@ -7,8 +7,6 @@ struct SetupView: View {
 
     @State private var carelinkUsername = ""
     @State private var carelinkPassword = ""
-    @State private var nightscoutURL = ""
-    @State private var apiSecret = ""
     @State private var isUS = false
     @State private var showError = false
     @State private var errorMessage = ""
@@ -28,14 +26,13 @@ struct SetupView: View {
                     Toggle("US Server", isOn: $isUS)
                 }
 
-                Section(header: Text("Nightscout Configuration")) {
-                    TextField("Nightscout URL", text: $nightscoutURL)
-                        .textContentType(.URL)
-                        .autocapitalization(.none)
-                        .keyboardType(.URL)
-
-                    SecureField("API Secret", text: $apiSecret)
-                        .textContentType(.password)
+                Section {
+                    Text("Data stored locally on device")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("Automatically wiped after 24 hours")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
 
                 Section {
@@ -69,9 +66,7 @@ struct SetupView: View {
 
     private var isFormValid: Bool {
         !carelinkUsername.isEmpty &&
-        !carelinkPassword.isEmpty &&
-        !nightscoutURL.isEmpty &&
-        !apiSecret.isEmpty
+        !carelinkPassword.isEmpty
     }
 
     private func setupAndLogin() {
@@ -81,11 +76,6 @@ struct SetupView: View {
             username: carelinkUsername,
             password: carelinkPassword,
             server: isUS ? "US" : "EU"
-        )
-
-        nightscoutManager.configure(
-            url: nightscoutURL,
-            apiSecret: apiSecret
         )
 
         Task {

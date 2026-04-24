@@ -16,19 +16,17 @@ struct CurrentGlucose {
 class NightscoutManager: ObservableObject {
     @Published var glucoseReadings: [GlucoseReading] = []
     @Published var currentGlucose: CurrentGlucose?
-    @Published var isConnected = false
+    @Published var isConnected = true
 
-    private var nightscoutURL: String = ""
-    private var apiSecret: String = ""
+    private let database: LocalDatabase
     private var timer: Timer?
 
-    func configure(url: String, apiSecret: String) {
-        self.nightscoutURL = url.trimmingCharacters(in: .whitespacesAndNewlines)
-        self.apiSecret = apiSecret
+    init(database: LocalDatabase) {
+        self.database = database
     }
 
     func startMonitoring() {
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
             self?.fetchData()
         }
 
@@ -41,50 +39,16 @@ class NightscoutManager: ObservableObject {
     }
 
     private func fetchData() {
-        Task {
-            await fetchGlucoseData()
-        }
-    }
+        glucoseReadings = database.getReadings(hours: 3)
 
-    private func fetchGlucoseData() async {
-        guard let url = URL(string: "\(nightscoutURL)/api/v1/entries.json?count=36") else {
-            return
-        }
+        if let latest = database.getLatestReading() {
+            let timeAgo = timeAgoString(from: latest.date)
 
-        var request = URLRequest(url: url)
-        request.setValue(apiSecret.sha1(), forHTTPHeaderField: "api-secret")
-
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let entries = try JSONDecoder().decode([Entry].self, from: data)
-
-            await MainActor.run {
-                self.glucoseReadings = entries.map { entry in
-                    GlucoseReading(
-                        date: Date(timeIntervalSince1970: TimeInterval(entry.date) / 1000),
-                        mgdl: entry.sgv,
-                        trend: entry.direction
-                    )
-                }
-
-                if let latest = entries.first {
-                    let date = Date(timeIntervalSince1970: TimeInterval(latest.date) / 1000)
-                    let timeAgo = self.timeAgoString(from: date)
-
-                    self.currentGlucose = CurrentGlucose(
-                        value: "\(latest.sgv)",
-                        trend: latest.direction,
-                        timeAgo: timeAgo
-                    )
-                }
-
-                self.isConnected = true
-            }
-        } catch {
-            print("Fetch error: \(error)")
-            await MainActor.run {
-                self.isConnected = false
-            }
+            currentGlucose = CurrentGlucose(
+                value: "\(latest.mgdl)",
+                trend: latest.trend,
+                timeAgo: timeAgo
+            )
         }
     }
 
@@ -101,24 +65,3 @@ class NightscoutManager: ObservableObject {
         }
     }
 }
-
-struct Entry: Codable {
-    let sgv: Int
-    let date: Int64
-    let direction: String?
-}
-
-extension String {
-    func sha1() -> String {
-        let data = Data(self.utf8)
-        var digest = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
-
-        data.withUnsafeBytes {
-            _ = CC_SHA1($0.baseAddress, CC_LONG(data.count), &digest)
-        }
-
-        return digest.map { String(format: "%02hhx", $0) }.joined()
-    }
-}
-
-import CommonCrypto
