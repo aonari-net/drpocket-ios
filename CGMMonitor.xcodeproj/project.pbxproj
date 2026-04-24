@@ -31,7 +31,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A0FFFFFE /* Frameworks */ = {
+		A0FFFFFC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,7 +41,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A0FFFFFD /* Products */ = {
+		A0FFFFFB /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				A0FFFFFF /* CGMMonitor.app */,
@@ -49,7 +49,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A0FFFFFC /* CGMMonitor */ = {
+		A0FFFFFA /* CGMMonitor */ = {
 			isa = PBXGroup;
 			children = (
 				A1000000 /* CGMMonitorApp.swift */,
@@ -65,11 +65,11 @@
 			path = CGMMonitor;
 			sourceTree = "<group>";
 		};
-		A0FFFFFB = {
+		A0FFFFF9 = {
 			isa = PBXGroup;
 			children = (
-				A0FFFFFC /* CGMMonitor */,
-				A0FFFFFD /* Products */,
+				A0FFFFFA /* CGMMonitor */,
+				A0FFFFFB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +78,11 @@
 /* Begin PBXNativeTarget section */
 		A0FFFFFE /* CGMMonitor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1000010 /* Build configuration list for PBXNativeTarget "CGMMonitor" */;
+			buildConfigurationList = A1000012 /* Build configuration list for PBXNativeTarget "CGMMonitor" */;
 			buildPhases = (
-				A0FFFFFA /* Sources */,
-				A0FFFFFE /* Frameworks */,
-				A0FFFFFC /* Resources */,
+				A0FFFFFB /* Sources */,
+				A0FFFFFC /* Frameworks */,
+				A0FFFFFD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +96,7 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A0FFFFFA /* Project object */ = {
+		A0FFFFF8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A0FFFFFB /* Build configuration list for PBXProject "CGMMonitor" */;
+			buildConfigurationList = A0FFFFF9 /* Build configuration list for PBXProject "CGMMonitor" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -116,8 +116,8 @@
 				en,
 				Base,
 			);
-			mainGroup = A0FFFFFB;
-			productRefGroup = A0FFFFFD /* Products */;
+			mainGroup = A0FFFFF9;
+			productRefGroup = A0FFFFFB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -127,7 +127,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A0FFFFFC /* Resources */ = {
+		A0FFFFFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,7 +138,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A0FFFFFA /* Sources */ = {
+		A0FFFFFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -236,7 +236,7 @@
 			};
 			name = Debug;
 		};
-		A1000012 /* Release */ = {
+		A1000013 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -314,25 +314,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0FFFFFB /* Build configuration list for PBXProject "CGMMonitor" */ = {
+		A0FFFFF9 /* Build configuration list for PBXProject "CGMMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1000011 /* Debug */,
-				A1000012 /* Release */,
+				A1000013 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1000010 /* Build configuration list for PBXNativeTarget "CGMMonitor" */ = {
+		A1000012 /* Build configuration list for PBXNativeTarget "CGMMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1000011 /* Debug */,
-				A1000012 /* Release */,
+				A1000013 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A0FFFFFA /* Project object */;
+	rootObject = A0FFFFF8 /* Project object */;
 }
