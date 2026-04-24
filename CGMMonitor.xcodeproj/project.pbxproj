@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A0FFFFF9 /* Build configuration list for PBXProject "CGMMonitor" */;
+			buildConfigurationList = A1000014 /* Build configuration list for PBXProject "CGMMonitor" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -314,7 +314,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0FFFFF9 /* Build configuration list for PBXProject "CGMMonitor" */ = {
+		A1000014 /* Build configuration list for PBXProject "CGMMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1000011 /* Debug */,
